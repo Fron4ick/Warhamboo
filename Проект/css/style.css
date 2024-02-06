@@ -137,13 +137,15 @@ body {
   justify-content: center;
 }
 
-.text_proectH {
-  font-family: "Trebuchet MS", sans-serif;
+.childH {
+  font-family: 'Trebuchet MS', monospace;
+  font-weight: 1000;
+  font-size: 20px;
 }
 
 .element_text { 
-  width: 80%;
-  height: 1000px;
+  width: 85%; /* Изменено с 80% на 95% */
+  height: 1180px;
   border-radius: 15px;
   background-color: rgba(108, 238, 101, 0.662);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -152,11 +154,25 @@ body {
   line-height: 50px;
 }
 
+
 .parent {
   display: flex;
   justify-content: center;
+  text-indent: 2em;
+  padding-left: 10px; /* Отступ слева */
+  padding-right: 10px; /* Отступ справа */
 }
 
-.text_proect {
-  font-family: "Trebuchet MS", sans-serif;
+.text_proect {}
+
+.imgk {
+  background-image: url('сам.jpg');
+  border-radius: 15%;
+  width: 35%;
+  margin: 0 auto; /* Добавлено для центрирования */
+  display: block;
+}
+
+.child {
+  font-family: 'Trebuchet MS', monospace;
 }
