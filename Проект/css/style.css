@@ -145,7 +145,7 @@ body {
 
 .element_text { 
   width: 85%; /* Изменено с 80% на 95% */
-  height: 1180px;
+  height: auto;
   border-radius: 15px;
   background-color: rgba(108, 238, 101, 0.662);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
