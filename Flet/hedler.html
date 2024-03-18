@@ -1,54 +1,24 @@
-import flet as ft
+Я выбрал MathJax
+Подготовь к копированию на сайт следующего текста, то что находится в фигурных скобках, то является формулами:
+PID-регуляторы являются самым распространённым алгоритмом для автоматического управления различных систем: от регулирования температуры термостатом, до стабилизации положения дрона. Существуют и другие, более сложные, системы автоматического управления, но PID-регулятор является одной из самых простых и надёжных [1].
+Теперь, следует разобраться, что обозначают буквы P, I, D. Если говорить коротко, то расшифровка данной аббревиатуры будет такова: пропорционально интегрально-дифференциальный регулятор.
+ 
+Рисунок 1 – Квадрокоптер в статичном положении
+Рассмотрим работу данного регулятора на модели квадрокоптера в 2D пространстве. То есть дрон может совершать только изменение угла крена, с помощью левого и правого мотора.
 
-class Message():
-    def __init__(self, user: str, text: str, message_type: str):
-        self.user = user
-        self.text = text
-        self.message_type = message_type
-
-
-def main(page: ft.Page):
-
-    chat = ft.Column()
-    new_message = ft.TextField()
-
-    def on_message(message: Message):
-        if message.message_type == "chat_message":
-            chat.controls.append(ft.Text(f"{message.user}: {message.text}"))
-        elif message.message_type == "login_message":
-            chat.controls.append(
-                ft.Text(message.text, italic=True, color=ft.colors.BLACK45, size=12)
-            )
-        page.update()
-
-    page.pubsub.subscribe(on_message)
-
-    def send_click(e):
-        page.pubsub.send_all(Message(user=page.session.get('user_name'), text=new_message.value, message_type="chat_message"))
-        new_message.value = ""
-        page.update()
-
-    user_name = ft.TextField(label="Enter your name")
-
-    def join_click(e):
-        if not user_name.value:
-            user_name.error_text = "Name cannot be blank!"
-            user_name.update()
-        else:
-            page.session.set("user_name", user_name.value)
-            page.dialog.open = False
-            page.pubsub.send_all(Message(user=user_name.value, text=f"{user_name.value} has joined the chat.", message_type="login_message"))
-            page.update()
-
-    page.dialog = ft.AlertDialog(
-        open=True,
-        modal=True,
-        title=ft.Text("Welcome!"),
-        content=ft.Column([user_name], tight=True),
-        actions=[ft.ElevatedButton(text="Join chat", on_click=join_click)],
-        actions_alignment="end",
-    )
-
-    page.add(chat, ft.Row([new_message, ft.ElevatedButton("Send", on_click=send_click)]))
-
-ft.app(target=main, view=ft.WEB_BROWSER)
+В то время, когда квадрокоптер неподвижен, его моторы вращаются с одинаковой скоростью. Для поворота, нам потребуется увеличить количество оборотов левого мотора, а для того, чтобы квадрокоптер не полетел вверх, нужно также уменьшить скорость оборотов правого мотора.
+{left = throttle + force}
+{right = throttle - force}
+Так left и right соответственно являются скоростями вращения левого и правого моторов, throttle – газ всех моторов для поддержания высоты, force – сила, прикладываемая для поворота.
+Возьмём ситуацию, в которой дрону поступает сигнал выровняться по горизонту.
+ 
+Рисунок 2 – Квадрокоптер в несбалансированном положении
+Тогда возьмём error – разность между желаемым углом и текущим. Данный параметр будет меняться с течением времени. Тогда получаем следующее:
+{force = P * error}
+Чем меньше будет скорость измерения error, тем точнее будут движения квадрокоптера. Но одного коэффициента P недостаточно, нужно добавить еще несколько, иначе квадрокоптер будет сильно колебаться. Следственно добавим коэффициент D, который будет оказывать останавливающую силу.
+{force=P*error+D*spin}   (где spin – это скорость изменения error).
+Из физики можно сказать, что ускорение это производная скорости по времени, тогда:
+{force=P*error+D*  (ⅆ error)/(ⅆ t)}
+Также возможно, что один край квадрокоптера весит больше чем другой или один из моторов работает хуже другого. Из этого следует, что квадрокоптер всегда будет тянуть в одну из сторон. Для решения данной проблемы поможет ввод интегрального слагаемого, так как оно зависит от длительного промежутка времени.
+{Δt Σerror≈∫_0^T▒〖ⅇrror ⅆt〗}
+В итоге получается формула PID-регулятор:
