@@ -170,7 +170,6 @@ body {
 .text_proect {}
 
 .imgk {
-  background-image: url('сам.jpg');
   width: 35%;
   margin: 0 auto; /* Добавлено для центрирования */
   display: block;
