@@ -96,11 +96,11 @@ input:checked + label .description {
     background-image: url('img/img1.jpeg');
 }
 .card[for="c2"] {
-    background-image: url('img/img2.jpeg');
+    background-image: url('');
 }
 .card[for="c3"] {
-    background-image: url('img/img3.jpeg');
+    background-image: url('');
 }
 .card[for="c4"] {
-    background-image: url('img/img4.jpeg');
+    background-image: url('');
 }
