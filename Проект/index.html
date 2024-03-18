@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
 <body>
+
   <div class="main_box">
     <input type="checkbox" id="check">
     <div class="btn_one">
@@ -29,11 +30,11 @@
       <div class="menu">
         <ul>
           <li><i class="fas fa-stream"></i>
-            <a href="#">Типы и цели</a>
+            <a href="#"  id="Glav11">Типы и цели</a>
           </li>
           <li>
             <i class="fas fa-stream"></i>
-            <a href="#prince">!@#$%</a>
+            <a href="#prince"  id="Glav21">!@#$%</a>
           </li>
           <li>
             <i class="fas fa-stream"></i>
@@ -69,13 +70,13 @@
     </div>
     <br>
     <div class="text_proect">
-      <div class='element_head'>
+      <div class='element_head'  id="Glav12">
         <div class="parentH">
           <div class="childH">Типы и цели.</div>
         </div>
       </div>
       <br><br><br>
-      <div class='element_text'>
+      <div class='element_text' id="hide1">
         <div class="parent">
           <div class="child">
             Существуют разные типы БПЛА, из которых можно выделить самые применяемые:<br>
@@ -89,18 +90,27 @@
           </div>
         </div>
       </div>
+      <script>
+        document.getElementById("Glav11").addEventListener("click", function() {
+          document.getElementById("hide1").style.display = "block";
+        });
+      
+        document.getElementById("Glav12").addEventListener("click", function() {
+          document.getElementById("hide1").style.display = "none";
+        });
+      </script>
     </div>
     </div>
     <br>
     <div class="text_proect">
-      <div class='element_head'>
+      <div class='element_head'  id="Glav22">
         <div class="parentH">
           <a name="prince"></a>
           <div class="childH">Принцыпы полёта</div>
         </div>
       </div>
       <br><br><br>
-      <div class='element_text'>
+      <div class='element_text' id="hide2">
         <div class="parent">
           <div class="child">
             Существуют разные типы БПЛА, из которых можно выделить самые применяемые:<br>
@@ -114,6 +124,15 @@
           </div>
         </div>
       </div>
+      <script>
+        document.getElementById("Glav21").addEventListener("click", function() {
+          document.getElementById("hide2").style.display = "block";
+        });
+      
+        document.getElementById("Glav22").addEventListener("click", function() {
+          document.getElementById("hide2").style.display = "none";
+        });
+      </script>
     </div>
   </div>
   </body>
