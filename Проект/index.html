@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
 <body>
+
   <div class="main_box">
     <input type="checkbox" id="check">
     <div class="btn_one">
@@ -29,11 +30,11 @@
       <div class="menu">
         <ul>
           <li><i class="fas fa-stream"></i>
-            <a href="#">Типы и цели</a>
+            <a href="#"  id="Glav11">Типы и цели БПЛА</a>
           </li>
           <li>
             <i class="fas fa-stream"></i>
-            <a href="#prince">Принцыпы полёта</a>
+            <a href="#prince"  id="Glav21">Строение квадрокоптера</a>
           </li>
           <li>
             <i class="fas fa-stream"></i>
@@ -65,18 +66,23 @@
     </div>
     <br>
     <div class="text_proect">
-      <div class='element_head'>
+      <div class='element_head'  id="Glav12">
         <div class="parentH">
-          <div class="childH">Типы и цели.</div>
+          <div class="childH">Типы и цели БПЛА</div>
         </div>
       </div>
       <br><br><br>
-      <div class='element_text'>
+      <div class='element_text' id="hide1">
         <div class="parent">
           <div class="child">
             Существуют разные типы БПЛА, из которых можно выделить самые применяемые:<br>
             Беспилотные летательные аппараты (БПЛА) самолётного типа, такие как беспилотные самолеты, предназначены для долгосрочных миссий и разведки. Их управление осуществляется изменением углов атаки и управлением подвижными частями крыльев. <br>
-            <img class="imgk" src="сам.jpg">
+            <table>
+              <tr>
+                <td><img class="imgk" src="сам.jpg"></td>
+                <td><img class="imgk" src="коптер.jpg"></td>
+              </tr>
+            </table>
             Квадрокоптеры, с другой стороны, оборудованы четырьмя моторами и обладают высокой маневренностью. Управление ими происходит путем регулировки оборотов моторов для изменения направления и угла наклона. Квадрокоптеры часто используются для аэросъемки, наблюдения и других развлекательных или промышленных целей. Мы будем рассматривать квадракоптеры, в следствии их высокой популярности в обществе. <br><br>
             Квадрокоптеры, получившие широкую популярность, применяются в различных областях, что делает их ключевыми инструментами в современном мире. В сфере доставки, они реализуют бесконтактное доставление товаров, что пользуется популярностью в городах, где доставка по улицам может быть слишком долгой. В медицине квадрокоптеры активно используются для быстрой транспортировки медицинских принадлежностей и даже органов для трансплантации, улучшая реакцию в срочных ситуациях. <br>
             Спасательные службы находят в них надежных помощников, применяя квадрокоптеры для эффективного поиска и спасения людей, а также для проведения картографических работ. В сельском хозяйстве они предоставляют точные данные о состоянии почвы и растений, способствуя улучшению сельскохозяйственных процессов. <br>
@@ -85,18 +91,27 @@
           </div>
         </div>
       </div>
+      <script>
+        document.getElementById("Glav11").addEventListener("click", function() {
+          document.getElementById("hide1").style.display = "block";
+        });
+      
+        document.getElementById("Glav12").addEventListener("click", function() {
+          document.getElementById("hide1").style.display = "none";
+        });
+      </script>
     </div>
     </div>
     <br>
     <div class="text_proect">
-      <div class='element_head'>
+      <div class='element_head'  id="Glav22">
         <div class="parentH">
           <a name="prince"></a>
           <div class="childH">Принцыпы полёта</div>
         </div>
       </div>
       <br><br><br>
-      <div class='element_text'>
+      <div class='element_text' id="hide2">
         <div class="parent">
           <div class="child">
             Существуют разные типы БПЛА, из которых можно выделить самые применяемые:<br>
@@ -110,6 +125,15 @@
           </div>
         </div>
       </div>
+      <script>
+        document.getElementById("Glav21").addEventListener("click", function() {
+          document.getElementById("hide2").style.display = "block";
+        });
+      
+        document.getElementById("Glav22").addEventListener("click", function() {
+          document.getElementById("hide2").style.display = "none";
+        });
+      </script>
     </div>
   </div>
   </body>
